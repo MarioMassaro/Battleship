@@ -1,13 +1,13 @@
 # Primer Proyecto TheBridge
 
-##Juego Battleship
+#Juego Battleship
   Creado por Mario Massaro y Ramon Ascanio Armada
  
-##librerias utilizadas:
+#librerias utilizadas:
    -Random
    -Numpy
 
-##Recursos:
+#Recursos:
    -se crearon 4 funciones:
        -disparo: forma manual del jugador para disparar
        -posicion: forma manual del jugador para posicionar sus barcos
