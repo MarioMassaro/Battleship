@@ -16,18 +16,21 @@ print(" procura no poner 2 barcos en la misma posicion, si no quieres repetir el
 posicion(tablerojugador,listaBarcos)
 
 #4-juego
-while vidaspc>0 or vidasjugador>0:
+while vidaspc>=0 or vidasjugador>=0:
 
     vidaspc = disparo(tableropc,tablerodisparojugador,vidaspc)
-
     vidasjugador = disparopc(tablerojugador,vidasjugador)
-    print(vidasjugador)
-    print(vidaspc)
+    print('Vidas jugador :  ',vidasjugador)
+    print('Vidas maquina :  ',vidaspc)
+    #5 terminar juego
+    if vidaspc ==0:
+        print('HAS GANADO')
+        break
+    if vidasjugador == 0:
+        print('GAME OVER')
+        break
 
-vidaspc == 0
-print('HAS GANADO')
-vidasjugador == 0
-print('GAME OVER')
+
 
 
 

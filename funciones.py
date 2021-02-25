@@ -3,34 +3,34 @@ import numpy as np
 
 
 
-#comprobar si hay 20 1 en el tablero
+
 def posicion(tablerojugador,listaBarcos):
-    i=9
+    i=10
     while i>0:
         try:
             barcoX = int(input("Introduzca la cordenada del eje x:  "))
             barcoY = int(input("introduzca la cordenada del eje y:  "))
             pregunta = int(input("0 para vertical, 1 para horizontal: "))
             if pregunta == 0:
-                if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX]:
+                if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[10 - i]), barcoX]:
                     print('Aqui ya hay un barco')
                 else:
-                    tablerojugador[barcoY:barcoY+(listaBarcos[9-i]), barcoX] = "1"
-                    listaBarcos[9-i]
+                    tablerojugador[barcoY:barcoY+(listaBarcos[10-i]), barcoX] = "1"
+                    listaBarcos[10-i]
                     i -= 1
             elif pregunta == 1:
-                if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX]:
+                if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[10 - i]), barcoX]:
                     print('Aqui  ya hay un barco')
                 else:
-                    tablerojugador[barcoY][barcoX:barcoY+(listaBarcos[9-i])] = "1"
-                    listaBarcos[9-i]
+                    tablerojugador[barcoY][barcoX:barcoY+(listaBarcos[10-i])] = "1"
+                    listaBarcos[10-i]
                     i -= 1
             else:
                 print("por favor introduzca 1 o 2")
             print(tablerojugador)
         except:
-            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES VUELVE A INTENTARLO')
-#posicion(tablerojugador,listabarcos)
+            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES, VUELVE A INTENTARLO')
+
 
 
 def disparo(tableropc, tablerodisparojugador, vidaspc):
@@ -45,25 +45,25 @@ def disparo(tableropc, tablerodisparojugador, vidaspc):
                 tableropc[disparoX][disparoY] = 'X'
                 tablerodisparojugador[disparoX][disparoY] = 'X'
                 vidaspc -= 1
-                print("has dado en el objetivo", tablerodisparojugador)
+                print("has dado en el objetivo\n", tablerodisparojugador)
 
             elif tableropc[disparoX][disparoY] == "0":
                 tablerodisparojugador[disparoX][disparoY] = "-"
                 tableropc[disparoX][disparoY]="-"
-                print("has fallado", tablerodisparojugador)
+                print("has fallado\n", tablerodisparojugador)
                 turnoJugador = False
 
             elif tableropc[disparoX][disparoY] == 'X':
-                print("ya has impactado aqui", tablerodisparojugador)
+                print("ya has impactado aqui\n", tablerodisparojugador)
 
             elif tableropc[disparoX][disparoY] == "-":
-                print("ya has impactado aqui", tablerodisparojugador)
+                print("ya has impactado aqui\n", tablerodisparojugador)
         except:
-            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES vuelve a intentarlo')
+            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES, VUELVE A INTENTARLO')
 
     return vidaspc
 
-#disparo(tablero,disparoX,disparoY)
+
 
 
 def disparopc (tablerojugador,vidasjugador):
