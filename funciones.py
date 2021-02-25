@@ -36,7 +36,7 @@ def posicion(tablerojugador,listaBarcos):
 def disparo(tableropc, tablerodisparojugador, vidaspc):
     turnoJugador = True
 
-    while turnoJugador:
+    while turnoJugador or vidaspc>0:
         try:
             disparoX = int(input("cordenada X del disparo:  "))
             disparoY = int(input("cordenada Y del disparo:  "))
@@ -68,7 +68,7 @@ def disparo(tableropc, tablerodisparojugador, vidaspc):
 
 def disparopc (tablerojugador,vidasjugador):
     turnopc = True
-    while turnopc:
+    while turnopc or vidasjugador>0:
 
         disparopcx = np.random.randint(10)
         disparopcy = np.random.randint(10)

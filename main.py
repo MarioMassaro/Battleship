@@ -23,7 +23,7 @@ while vidaspc>=0 or vidasjugador>=0:
     print('Vidas jugador :  ',vidasjugador)
     print('Vidas maquina :  ',vidaspc)
     #5 terminar juego
-    if vidaspc ==0:
+    if vidaspc == 0:
         print('HAS GANADO')
         break
     if vidasjugador == 0:
