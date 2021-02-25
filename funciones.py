@@ -2,36 +2,40 @@ import random
 import numpy as np
 
 
-def posicion(tablerojugador,listabarcos):
+
+#comprobar si hay 20 1 en el tablero
+def posicion(tablerojugador,listaBarcos):
     i=9
     while i>0:
         try:
             barcoX = int(input("Introduzca la cordenada del eje x:  "))
             barcoY = int(input("introduzca la cordenada del eje y:  "))
-            pregunta = int(input("0 para vertical, 1 para horizontal:   "))
+            pregunta = int(input("0 para vertical, 1 para horizontal: "))
             if pregunta == 0:
                 if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX]:
                     print('Aqui ya hay un barco')
                 else:
-                    tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX] = "1"
-                    listaBarcos[9 - i]
+                    tablerojugador[barcoY:barcoY+(listaBarcos[9-i]), barcoX] = "1"
+                    listaBarcos[9-i]
                     i -= 1
             elif pregunta == 1:
                 if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX]:
                     print('Aqui  ya hay un barco')
                 else:
-                    tablerojugador[barcoY][barcoX:barcoY + (listaBarcos[9 - i])] = "1"
-                    listaBarcos[9 - i]
+                    tablerojugador[barcoY][barcoX:barcoY+(listaBarcos[9-i])] = "1"
+                    listaBarcos[9-i]
                     i -= 1
             else:
                 print("por favor introduzca 1 o 2")
             print(tablerojugador)
         except:
             print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES VUELVE A INTENTARLO')
+#posicion(tablerojugador,listabarcos)
 
 
 def disparo(tableropc, tablerodisparojugador, vidaspc):
     turnoJugador = True
+
     while turnoJugador:
         try:
             disparoX = int(input("cordenada X del disparo:  "))
@@ -41,13 +45,12 @@ def disparo(tableropc, tablerodisparojugador, vidaspc):
                 tableropc[disparoX][disparoY] = 'X'
                 tablerodisparojugador[disparoX][disparoY] = 'X'
                 vidaspc -= 1
-                print("has dado en el objetivo\n", tablerodisparojugador)
+                print("has dado en el objetivo", tablerodisparojugador)
 
             elif tableropc[disparoX][disparoY] == "0":
-
                 tablerodisparojugador[disparoX][disparoY] = "-"
                 tableropc[disparoX][disparoY]="-"
-                print("has fallado\n", tablerodisparojugador)
+                print("has fallado", tablerodisparojugador)
                 turnoJugador = False
 
             elif tableropc[disparoX][disparoY] == 'X':
@@ -56,8 +59,11 @@ def disparo(tableropc, tablerodisparojugador, vidaspc):
             elif tableropc[disparoX][disparoY] == "-":
                 print("ya has impactado aqui", tablerodisparojugador)
         except:
-            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES VUElVE A INTENTARLO')
+            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES vuelve a intentarlo')
+
     return vidaspc
+
+#disparo(tablero,disparoX,disparoY)
 
 
 def disparopc (tablerojugador,vidasjugador):
@@ -79,12 +85,14 @@ def disparopc (tablerojugador,vidasjugador):
         elif tablerojugador[disparopcx][disparopcy] == 'X':
             turnopc = False
 
+
     return vidasjugador
 
 
 
-def barcosrandom(tableropc, listabarcos):
-    for eslora in listabarcos:
+
+def barcosrandom(tableropc, listaBarcos):
+    for eslora in listaBarcos:
         while True:
             orient = random.choice(['N', 'S', 'E', 'O'])
             current_pos = np.random.randint(10,size=2)
@@ -106,4 +114,3 @@ def barcosrandom(tableropc, listabarcos):
             elif (orient == 'O') and (len(coors_posiO) == eslora) and ('1' not in coors_posiO):
                 tableropc[fila, col:col - eslora:-1] = '1'
                 break
-

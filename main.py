@@ -24,7 +24,10 @@ while vidaspc>0 or vidasjugador>0:
     print(vidasjugador)
     print(vidaspc)
 
-
+vidaspc == 0
+print('HAS GANADO')
+vidasjugador == 0
+print('GAME OVER')
 
 
 
