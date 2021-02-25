@@ -5,47 +5,58 @@ import numpy as np
 def posicion(tablerojugador,listabarcos):
     i=9
     while i>0:
-        barcoX = int(input("Introduzca la cordenada del eje x:  "))
-        barcoY = int(input("introduzca la cordenada del eje y:  "))
-        pregunta = int(input("0 para vertical, 1 para horizontal:   "))
-        if pregunta == 0:
-            tablerojugador[barcoY:barcoY+(listabarcos[9-i]), barcoX] = "1"
-            listabarcos[9-i]
-            i -= 1
-        elif pregunta == 1:
-            tablerojugador[barcoY][barcoX:barcoY+(listabarcos[9-i])] = "1"
-            listabarcos[9- i]
-            i -= 1
-        else:
-            print("por favor introduzca 1 o 2")
-        print(tablerojugador)
+        try:
+            barcoX = int(input("Introduzca la cordenada del eje x:  "))
+            barcoY = int(input("introduzca la cordenada del eje y:  "))
+            pregunta = int(input("0 para vertical, 1 para horizontal:   "))
+            if pregunta == 0:
+                if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX]:
+                    print('Aqui ya hay un barco')
+                else:
+                    tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX] = "1"
+                    listaBarcos[9 - i]
+                    i -= 1
+            elif pregunta == 1:
+                if '1' in tablerojugador[barcoY:barcoY + (listaBarcos[9 - i]), barcoX]:
+                    print('Aqui  ya hay un barco')
+                else:
+                    tablerojugador[barcoY][barcoX:barcoY + (listaBarcos[9 - i])] = "1"
+                    listaBarcos[9 - i]
+                    i -= 1
+            else:
+                print("por favor introduzca 1 o 2")
+            print(tablerojugador)
+        except:
+            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES VUELVE A INTENTARLO')
 
 
 def disparo(tableropc, tablerodisparojugador, vidaspc):
     turnoJugador = True
     while turnoJugador:
-        disparoX = int(input("cordenada X del disparo:  "))
-        disparoY = int(input("cordenada Y del disparo:  "))
-        if tableropc[disparoX][disparoY] == "1":
+        try:
+            disparoX = int(input("cordenada X del disparo:  "))
+            disparoY = int(input("cordenada Y del disparo:  "))
+            if tableropc[disparoX][disparoY] == "1":
 
-            tableropc[disparoX][disparoY] = 'X'
-            tablerodisparojugador[disparoX][disparoY] = 'X'
-            vidaspc -= 1
-            print("has dado en el objetivo\n", tablerodisparojugador)
+                tableropc[disparoX][disparoY] = 'X'
+                tablerodisparojugador[disparoX][disparoY] = 'X'
+                vidaspc -= 1
+                print("has dado en el objetivo\n", tablerodisparojugador)
 
-        elif tableropc[disparoX][disparoY] == "0":
+            elif tableropc[disparoX][disparoY] == "0":
 
-            tablerodisparojugador[disparoX][disparoY] = "-"
-            tableropc[disparoX][disparoY]="-"
-            print("has fallado\n", tablerodisparojugador)
-            turnoJugador = False
+                tablerodisparojugador[disparoX][disparoY] = "-"
+                tableropc[disparoX][disparoY]="-"
+                print("has fallado\n", tablerodisparojugador)
+                turnoJugador = False
 
-        elif tableropc[disparoX][disparoY] == 'X':
-            print("ya has impactado aqui", tablerodisparojugador)
+            elif tableropc[disparoX][disparoY] == 'X':
+                print("ya has impactado aqui", tablerodisparojugador)
 
-        elif tableropc[disparoX][disparoY] == "-":
-            print("ya has impactado aqui", tablerodisparojugador)
-
+            elif tableropc[disparoX][disparoY] == "-":
+                print("ya has impactado aqui", tablerodisparojugador)
+        except:
+            print('NO HAS SIDO CAPAZ DE SEGUIR LAS INSTRUCCIONES VUElVE A INTENTARLO')
     return vidaspc
 
 
@@ -70,11 +81,6 @@ def disparopc (tablerojugador,vidasjugador):
 
     return vidasjugador
 
-def menu():
-
-	print ("Selecciona una opción")
-	print ("\t1 - seguir jugando")
-	print ("\t2 - salir")
 
 
 def barcosrandom(tableropc, listabarcos):
