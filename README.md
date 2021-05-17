@@ -1,6 +1,6 @@
-# Primer Proyecto "TheBridge"
+# Practica con python 
 
-### Juego Battleship
+### Un Simple Juego de Battleship	:ocean: :ship:
 
 **Creado por Mario Massaro y Ramon Ascanio Armada**
  
